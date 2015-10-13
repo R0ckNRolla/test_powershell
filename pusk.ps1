@@ -1,7 +1,7 @@
 $si = new-object System.Diagnostics.ProcessStartInfo
 $si.WorkingDirectory = $pwd
 $si.UseShellExecute = $false
-$si.FileName = (get-command calc.exe).Definition
+$si.FileName = (get-command powershell.exe).Definition
 $si.CreateNoWindow = $true
 $si.WindowStyle = 'Hidden'
 
