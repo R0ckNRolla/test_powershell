@@ -1,10 +1,5 @@
-$si = new-object System.Diagnostics.ProcessStartInfo
-$si.WorkingDirectory = $pwd
-$si.UseShellExecute = $false
-$si.FileName = (get-command powershell.exe).Definition
-$si.CreateNoWindow = $true
-$si.WindowStyle = 'Hidden'
-$si.Arguments = (New-Object -ComObject InternetExplorer.Application).Navigate('http://www.google.com')
-$p = New-Object System.Diagnostics.Process
-$p.StartInfo = $si
-$p.start()
+$f=$env:TEMP;$f+='\__Temp.tmp'
+"Write-Output 'Hello';" >> $f
+$a = get-content $f
+$s = $executioncontext.invokecommand.NewScriptBlock([string]($a))
+Invoke-Command -scriptblock $s
