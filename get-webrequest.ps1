@@ -10,5 +10,5 @@ write-host $result
 #
 
 $wc = New-Object System.Net.WebClient
-$result = $wc.DownloadString('http://www.geographycollector.com')
+$result = $wc.DownloadString('http://www.google.com')
 write-host $result
