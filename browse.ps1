@@ -5,3 +5,5 @@ Start-Sleep -s 15
 
 #	$ie.Document.Body.InnerText
 #	$ie | Get-Member
+
+$ie.quit()
