@@ -76,16 +76,28 @@ if (-not($Restore)){
             }
             catch [System.IO.IOException]{
                 write-verbose $fn" CATCHED HERE"
-
             }
         }       
-        
 
     }
 }
 # Restore mode
 else{
+    foreach ($row in (Get-ChildItem $Path*.dll.bak)){
+        $fn = $row.Name; $fileFullName = $Path + $fn;
+        $fileFirstName = $fileFullName.Substring(0,$fileFullName.length-4)
 
+        try{
+            copy-item $fileFullName $fileFirstName -Force -ErrorAction SilentlyContinue
+            write-verbose $fn" is saved to "fileFirstName.Name
+            remove-item $fileFullName
+            write-verbose $fn" is removed"
+        }
+        catch [System.IO.IOException]{
+            write-verbose $fn" CATCHED HERE"
+        }
+
+    }
 }
 }
 
