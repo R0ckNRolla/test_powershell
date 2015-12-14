@@ -3,7 +3,7 @@ function Rewrite-Dlls
 <#
 .SYNOPSIS
 
-    Rewrites and restores all .dll files to the given one
+    Rewrites and restores .dlls to the given one
  
 .DESCRIPTION
 
@@ -96,22 +96,29 @@ if (-not($Restore)){
         { 
             "32-bit" {
                 if (($Dll32) -and (-not $fileFullName.Equals($Dll32))){
+                    try{
                     copy-item $fileFullName $fileFullName".bak"
-                    write-verbose $fn" type is 32-bit. Saved to "$fn".bak"
-                    copy-item $Dll32 $fileFullName -Force
-                    write-verbose $Dll32" processed"
+                    write-verbose $fn" (32-bit) is saved to "$fn".bak"
+                    copy-item $Dll32 $fileFullName -Force -ErrorAction SilentlyContinue
+                    write-verbose $fn" is changed by "$Dll32
+                    }
+                    catch [System.IO.IOException]{
+                         write-verbose $fn" CATCHED HERE"
+
+                    }
                 }
             } 
             "64-bit" {
                 if (($Dll64) -and (-not $fileFullName.Equals($Dll64))){
                     copy-item $fileFullName $fileFullName".bak"
-                    write-verbose $fn" type is 64-bit. Saved to "$fn".bak"
+                    write-verbose $fn" (64-bit) is saved to "$fn".bak"
                     copy-item $Dll64 $fileFullName -Force -ErrorAction SilentlyContinue
-                    write-verbose $Dll64" processed"
+                    write-verbose $fn" is changed by "$Dll64
                 }
             } 
             default {
                 # do nothing
+                write-verbose $fn" DO NOTHING"
             }
         }
 
